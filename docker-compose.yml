@@ -1,0 +1,34 @@
+version: "3.9"
+# To run this service use : docker compose up -d
+
+services:
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama:/root/.ollama
+    restart: always
+
+  whisper:
+    image: lscr.io/linuxserver/faster-whisper:latest
+    container_name: whisper
+    ports:
+      - "9000:9000"
+
+  # translator:
+  #   image: ghcr.io/huggingface/text-generation-inference:latest
+  #   container_name: translator
+  #   ports:
+  #     - "8080:80"
+
+  tts:
+    image: ghcr.io/coqui-ai/tts:latest
+    container_name: tts
+    ports:
+      - "5002:5002"
+
+volumes:
+  ollama:

@@ -12,6 +12,7 @@ export async function GET() {
       total_items: menu.items.length,
     });
   } catch (error) {
+    console.log(error);
     return NextResponse.json(
       {
         success: false,
